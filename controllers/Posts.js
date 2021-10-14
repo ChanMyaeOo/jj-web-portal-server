@@ -57,3 +57,22 @@ export const deletePost = async (req, res) => {
 
     res.json({ message: "Post deleted successfully." });
 }
+
+
+export const getLivingLocationPosts = async (req, res) => {
+    try {
+        const posts = await PostModel.find({ tag: "Visa"})
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
+export const getPhotoAlbumPosts = async (req, res) => {
+    try {
+        const posts = await PostModel.find({ tag: "Photo Album"})
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}

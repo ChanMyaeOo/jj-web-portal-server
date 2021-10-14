@@ -5,6 +5,7 @@ const postSchema = mongoose.Schema({
     message: String,
     name: String,
     selectedFile: String,
+    tag: String,
     createdAt: {
         type: Date,
         default: new Date(),
