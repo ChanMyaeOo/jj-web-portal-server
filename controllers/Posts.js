@@ -61,7 +61,16 @@ export const deletePost = async (req, res) => {
 
 export const getLivingLocationPosts = async (req, res) => {
     try {
-        const posts = await PostModel.find({ tag: "Visa"})
+        const posts = await PostModel.find({ tag: "Living Location"}).sort({ _id: -1})
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
+export const getNoticePosts = async (req, res) => {
+    try {
+        const posts = await PostModel.find({ tag: "Notice"}).sort({ _id: -1})
         res.status(200).json(posts)
     } catch (error) {
         res.status(404).json({ message: error.message})
