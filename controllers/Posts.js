@@ -16,7 +16,7 @@ export const createPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
     try {
-        const posts = await PostModel.find()
+        const posts = await PostModel.find().sort({ _id: -1}).limit(6)
         res.status(200).json(posts)
     } catch (error) {
         res.status(404).json({ message: error.message})
@@ -70,7 +70,7 @@ export const getLivingLocationPosts = async (req, res) => {
 
 export const getPhotoAlbumPosts = async (req, res) => {
     try {
-        const posts = await PostModel.find({ tag: "Photo Album"})
+        const posts = await PostModel.find({ tag: "Photo Album"}).sort({ _id: -1})
         res.status(200).json(posts)
     } catch (error) {
         res.status(404).json({ message: error.message})
