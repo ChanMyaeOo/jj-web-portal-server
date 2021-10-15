@@ -8,7 +8,8 @@ import {
     getLivingLocationPosts,
     getPhotoAlbumPosts,
     getNoticePosts,
-    getBuySellPosts
+    getBuySellPosts,
+    getJobSearchPosts
 } from "../controllers/Posts.js";
 
 const router = express.Router();
@@ -18,6 +19,7 @@ router.get("/living-location", getLivingLocationPosts);
 router.get("/photo-album", getPhotoAlbumPosts);
 router.get("/notice", getNoticePosts);
 router.get("/buy-sell", getBuySellPosts);
+router.get('/job-search', getJobSearchPosts)
 router.get("/", getPosts);
 router.get("/:id", getPost);
 router.patch("/:id", updatePost);

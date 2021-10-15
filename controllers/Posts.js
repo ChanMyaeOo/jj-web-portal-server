@@ -94,3 +94,12 @@ export const getBuySellPosts = async (req, res) => {
         res.status(404).json({ message: error.message})
     }
 }
+
+export const getJobSearchPosts = async (req, res) => {
+    try {
+        const posts = await PostModel.find({ tag: "Recruitment/Job Search"}).sort({ _id: -1})
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
