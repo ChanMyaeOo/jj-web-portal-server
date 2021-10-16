@@ -9,7 +9,10 @@ import {
     getPhotoAlbumPosts,
     getNoticePosts,
     getBuySellPosts,
-    getJobSearchPosts
+    getJobSearchPosts,
+    getNoticeLatestPosts,
+    getPhotoAlbumLatestPosts,
+    getBuySellLatestPosts
 } from "../controllers/Posts.js";
 
 const router = express.Router();
@@ -17,8 +20,11 @@ const router = express.Router();
 router.post("/", createPost);
 router.get("/living-location", getLivingLocationPosts);
 router.get("/photo-album", getPhotoAlbumPosts);
+router.get("/photo-album-latest", getPhotoAlbumLatestPosts);
 router.get("/notice", getNoticePosts);
+router.get('/notice-latest', getNoticeLatestPosts);
 router.get("/buy-sell", getBuySellPosts);
+router.get("/buy-sell-latest", getBuySellLatestPosts);
 router.get('/job-search', getJobSearchPosts)
 router.get("/", getPosts);
 router.get("/:id", getPost);
@@ -26,3 +32,4 @@ router.patch("/:id", updatePost);
 router.delete("/:id", deletePost);
 
 export default router;
+

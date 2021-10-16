@@ -77,6 +77,15 @@ export const getNoticePosts = async (req, res) => {
     }
 }
 
+export const getNoticeLatestPosts = async (req, res) => {
+    try {
+        const posts = await PostModel.find({ tag: "Notice"}).sort({ _id: -1}).limit(6)
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
 export const getPhotoAlbumPosts = async (req, res) => {
     try {
         const posts = await PostModel.find({ tag: "Photo Album"}).sort({ _id: -1})
@@ -86,9 +95,27 @@ export const getPhotoAlbumPosts = async (req, res) => {
     }
 }
 
+export const getPhotoAlbumLatestPosts = async (req, res) => {
+    try {
+        const posts = await PostModel.find({ tag: "Photo Album"}).sort({ _id: -1}).limit(6)
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
 export const getBuySellPosts = async (req, res) => {
     try {
         const posts = await PostModel.find({ tag: "Home Appliances"}).sort({ _id: -1})
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
+export const getBuySellLatestPosts = async (req, res) => {
+    try {
+        const posts = await PostModel.find({ tag: "Home Appliances"}).sort({ _id: -1}).limit(6)
         res.status(200).json(posts)
     } catch (error) {
         res.status(404).json({ message: error.message})
