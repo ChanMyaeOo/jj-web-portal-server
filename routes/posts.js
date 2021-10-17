@@ -12,7 +12,8 @@ import {
     getJobSearchPosts,
     getNoticeLatestPosts,
     getPhotoAlbumLatestPosts,
-    getBuySellLatestPosts
+    getBuySellLatestPosts,
+    getJobSearchLatestPosts
 } from "../controllers/Posts.js";
 
 const router = express.Router();
@@ -26,6 +27,7 @@ router.get('/notice-latest', getNoticeLatestPosts);
 router.get("/buy-sell", getBuySellPosts);
 router.get("/buy-sell-latest", getBuySellLatestPosts);
 router.get('/job-search', getJobSearchPosts)
+router.get('/job-search-latest', getJobSearchLatestPosts)
 router.get("/", getPosts);
 router.get("/:id", getPost);
 router.patch("/:id", updatePost);
