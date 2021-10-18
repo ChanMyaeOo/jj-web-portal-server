@@ -16,6 +16,15 @@ export const createPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
     try {
+        const posts = await PostModel.find();
+        res.status(200).json(posts)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
+export const getLatestPosts = async (req, res) => {
+    try {
         const posts = await PostModel.find().sort({ _id: -1}).limit(6)
         res.status(200).json(posts)
     } catch (error) {

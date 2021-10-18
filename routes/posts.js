@@ -13,7 +13,8 @@ import {
     getNoticeLatestPosts,
     getPhotoAlbumLatestPosts,
     getBuySellLatestPosts,
-    getJobSearchLatestPosts
+    getJobSearchLatestPosts,
+    getLatestPosts
 } from "../controllers/Posts.js";
 
 const router = express.Router();
@@ -29,6 +30,7 @@ router.get("/buy-sell-latest", getBuySellLatestPosts);
 router.get('/job-search', getJobSearchPosts)
 router.get('/job-search-latest', getJobSearchLatestPosts)
 router.get("/", getPosts);
+router.get('/latestPosts', getLatestPosts);
 router.get("/:id", getPost);
 router.patch("/:id", updatePost);
 router.delete("/:id", deletePost);
