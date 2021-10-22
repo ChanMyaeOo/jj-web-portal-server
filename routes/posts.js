@@ -16,10 +16,11 @@ import {
     getJobSearchLatestPosts,
     getLatestPosts
 } from "../controllers/Posts.js";
+import auth from '../middleware/auth.js'
 
 const router = express.Router();
 
-router.post("/", createPost);
+router.post("/", auth, createPost);
 router.get("/living-location", getLivingLocationPosts);
 router.get("/photo-album", getPhotoAlbumPosts);
 router.get("/photo-album-latest", getPhotoAlbumLatestPosts);
@@ -32,8 +33,8 @@ router.get('/job-search-latest', getJobSearchLatestPosts)
 router.get("/", getPosts);
 router.get('/latestPosts', getLatestPosts);
 router.get("/:id", getPost);
-router.patch("/:id", updatePost);
-router.delete("/:id", deletePost);
+router.patch("/:id", auth, updatePost);
+router.delete("/:id", auth, deletePost);
 
 export default router;
 
