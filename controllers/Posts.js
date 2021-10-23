@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 export const createPost = async (req, res) => {
     const post = req.body;
-    const newPost = new PostModel({ ...post, createdAt: new Date().toISOString() })
+    const newPost = new PostModel({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
 
     try {
         await newPost.save();
