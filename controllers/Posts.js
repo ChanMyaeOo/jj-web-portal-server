@@ -78,9 +78,18 @@ export const getLivingLocationPosts = async (req, res) => {
 }
 
 export const getNoticePosts = async (req, res) => {
+    const { page } = req.query;
+
     try {
-        const posts = await PostModel.find({ tag: "Notice"}).sort({ _id: -1})
-        res.status(200).json(posts)
+        // const posts = await PostModel.find({ tag: "Notice"}).sort({ _id: -1})
+        // res.status(200).json(posts)
+
+        const LIMIT = 2;
+        const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
+    
+        const total = await PostModel.countDocuments({ tag: "Notice"});
+        const posts = await PostModel.find({ tag: "Notice"}).sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
+        res.json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT)});
     } catch (error) {
         res.status(404).json({ message: error.message})
     }
