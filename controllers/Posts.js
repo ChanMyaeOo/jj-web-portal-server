@@ -67,6 +67,19 @@ export const deletePost = async (req, res) => {
     res.json({ message: "Post deleted successfully." });
 }
 
+export const commentPost = async (req, res) => {
+    const { id } = req.params;
+    const { value } = req.body;
+
+    const post = await PostModel.findById(id)
+
+    post.comments.push(value)
+
+    const updatedPost = await PostModel.findByIdAndUpdate(id, post, { new: true })
+
+    res.json(updatedPost)
+}
+
 
 export const getLivingLocationPosts = async (req, res) => {
     try {

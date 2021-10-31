@@ -7,6 +7,7 @@ const postSchema = mongoose.Schema({
     creator: String,
     selectedFile: String,
     tag: String,
+    comments: { type: [String], default: []},
     createdAt: {
         type: Date,
         default: new Date(),
