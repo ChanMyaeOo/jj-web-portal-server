@@ -15,7 +15,8 @@ import {
     getBuySellLatestPosts,
     getJobSearchLatestPosts,
     getLatestPosts,
-    commentPost
+    commentPost,
+    getOwnPosts
 } from "../controllers/Posts.js";
 import auth from '../middleware/auth.js'
 
@@ -33,6 +34,7 @@ router.get('/job-search', getJobSearchPosts)
 router.get('/job-search-latest', getJobSearchLatestPosts)
 router.get("/", getPosts);
 router.get('/latestPosts', getLatestPosts);
+router.get('/:id/own-posts', getOwnPosts)
 router.get("/:id", getPost);
 router.patch("/:id", auth, updatePost);
 router.delete("/:id", auth, deletePost);

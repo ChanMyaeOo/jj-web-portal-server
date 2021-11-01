@@ -80,6 +80,22 @@ export const commentPost = async (req, res) => {
     res.json(updatedPost)
 }
 
+export const getOwnPosts = async (req, res) => {
+    const { id } = req.params;
+    const { page } = req.query;
+
+    try {
+        const LIMIT = 2;
+        const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
+    
+        const total = await PostModel.countDocuments({ creator: id});
+        const posts = await PostModel.find({ creator: id }).sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
+        res.json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT)});
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
 
 export const getLivingLocationPosts = async (req, res) => {
     const { page } = req.query;
