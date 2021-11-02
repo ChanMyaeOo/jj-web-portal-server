@@ -100,9 +100,6 @@ export const getOwnPosts = async (req, res) => {
 export const getLivingLocationPosts = async (req, res) => {
     const { page } = req.query;
     try {
-        // const posts = await PostModel.find({ tag: "Living/Location"}).sort({ _id: -1})
-        // res.status(200).json(posts)
-
         const LIMIT = 2;
         const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
     
