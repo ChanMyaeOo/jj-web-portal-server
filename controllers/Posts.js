@@ -155,6 +155,19 @@ export const getPhotoAlbumPosts = async (req, res) => {
     }
 }
 
+export const getPhotoAlbumTotal = async (req, res) => {
+    try {
+    
+        const total = await PostModel.countDocuments({ tag: "Photo Album"});
+        // const posts = await PostModel.find({ tag: "Photo Album"}).sort({ _id: -1 });
+        res.status(200).json(total)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
+
+
 export const getPhotoAlbumLatestPosts = async (req, res) => {
     try {
         const posts = await PostModel.find({ tag: "Photo Album"}).sort({ _id: -1}).limit(6)
