@@ -85,7 +85,7 @@ export const getOwnPosts = async (req, res) => {
     const { page } = req.query;
 
     try {
-        const LIMIT = 2;
+        const LIMIT = 8;
         const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
     
         const total = await PostModel.countDocuments({ creator: id});
@@ -100,7 +100,7 @@ export const getOwnPosts = async (req, res) => {
 export const getLivingLocationPosts = async (req, res) => {
     const { page } = req.query;
     try {
-        const LIMIT = 2;
+        const LIMIT = 8;
         const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
     
         const total = await PostModel.countDocuments({ tag: "Living/Location"});
@@ -127,7 +127,7 @@ export const getNoticePosts = async (req, res) => {
         // const posts = await PostModel.find({ tag: "Notice"}).sort({ _id: -1})
         // res.status(200).json(posts)
 
-        const LIMIT = 2;
+        const LIMIT = 8;
         const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
     
         const total = await PostModel.countDocuments({ tag: "Notice"});
@@ -162,7 +162,7 @@ export const getPhotoAlbumPosts = async (req, res) => {
         // const posts = await PostModel.find({ tag: "Photo Album"}).sort({ _id: -1})
         // res.status(200).json(posts)
 
-        const LIMIT = 2;
+        const LIMIT = 8;
         const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
     
         const total = await PostModel.countDocuments({ tag: "Photo Album"});
@@ -200,7 +200,7 @@ export const getBuySellPosts = async (req, res) => {
         // const posts = await PostModel.find({ tag: "Home Appliances"}).sort({ _id: -1})
         // res.status(200).json(posts)
 
-        const LIMIT = 2;
+        const LIMIT = 8;
         const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
     
         const total = await PostModel.countDocuments({ tag: "Home Appliances" });
@@ -235,7 +235,7 @@ export const getJobSearchPosts = async (req, res) => {
         // const posts = await PostModel.find({ tag: "Recruitment/Job Search"}).sort({ _id: -1})
         // res.status(200).json(posts)
 
-        const LIMIT = 2;
+        const LIMIT = 8;
         const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
 
         const total = await PostModel.countDocuments({ tag: "Recruitment/Job Search" });
