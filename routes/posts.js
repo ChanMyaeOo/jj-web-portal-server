@@ -18,20 +18,28 @@ import {
     commentPost,
     getOwnPosts,
     getPhotoAlbumTotal,
+    getNoticeTotal,
+    getLivTotal,
+    getBuySellTotal,
+    getJobSearchTotal
 } from "../controllers/Posts.js";
 import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
 router.post("/", auth, createPost);
+router.get('/livtotal', getLivTotal)
 router.get("/living-location", getLivingLocationPosts);
 router.get("/ptotal", getPhotoAlbumTotal);
 router.get("/photo-album", getPhotoAlbumPosts);
 router.get("/photo-album-latest", getPhotoAlbumLatestPosts);
 router.get("/notice", getNoticePosts);
+router.get('/ntotal', getNoticeTotal)
 router.get("/notice-latest", getNoticeLatestPosts);
+router.get("/btotal", getBuySellTotal)
 router.get("/buy-sell", getBuySellPosts);
 router.get("/buy-sell-latest", getBuySellLatestPosts);
+router.get('/jtotal', getJobSearchTotal)
 router.get("/job-search", getJobSearchPosts);
 router.get("/job-search-latest", getJobSearchLatestPosts);
 router.get("/", getPosts);

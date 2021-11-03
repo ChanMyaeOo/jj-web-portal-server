@@ -111,6 +111,15 @@ export const getLivingLocationPosts = async (req, res) => {
     }
 }
 
+export const getLivTotal = async (req, res) => {
+    try {
+        const total = await PostModel.countDocuments({ tag: "Living/Location"});
+        res.status(200).json(total)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
 export const getNoticePosts = async (req, res) => {
     const { page } = req.query;
 
@@ -124,6 +133,15 @@ export const getNoticePosts = async (req, res) => {
         const total = await PostModel.countDocuments({ tag: "Notice"});
         const posts = await PostModel.find({ tag: "Notice"}).sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
         res.json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT)});
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
+export const getNoticeTotal = async (req, res) => {
+    try {
+        const total = await PostModel.countDocuments({ tag: "Notice"});
+        res.status(200).json(total)
     } catch (error) {
         res.status(404).json({ message: error.message})
     }
@@ -159,7 +177,6 @@ export const getPhotoAlbumTotal = async (req, res) => {
     try {
     
         const total = await PostModel.countDocuments({ tag: "Photo Album"});
-        // const posts = await PostModel.find({ tag: "Photo Album"}).sort({ _id: -1 });
         res.status(200).json(total)
     } catch (error) {
         res.status(404).json({ message: error.message})
@@ -194,6 +211,15 @@ export const getBuySellPosts = async (req, res) => {
     }
 }
 
+export const getBuySellTotal = async (req, res) => {
+    try {
+        const total = await PostModel.countDocuments({ tag: "Home Appliances"});
+        res.status(200).json(total)
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
 export const getBuySellLatestPosts = async (req, res) => {
     try {
         const posts = await PostModel.find({ tag: "Home Appliances"}).sort({ _id: -1}).limit(6)
@@ -216,6 +242,15 @@ export const getJobSearchPosts = async (req, res) => {
         const posts = await PostModel.find({ tag: "Recruitment/Job Search" }).sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
         res.json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT)});
 
+    } catch (error) {
+        res.status(404).json({ message: error.message})
+    }
+}
+
+export const getJobSearchTotal = async (req, res) => {
+    try {
+        const total = await PostModel.countDocuments({ tag: "Recruitment/Job Search"});
+        res.status(200).json(total)
     } catch (error) {
         res.status(404).json({ message: error.message})
     }
